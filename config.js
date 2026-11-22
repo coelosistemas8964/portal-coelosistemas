@@ -1,6 +1,6 @@
 /*
- * Endereço publicado do sistema Gestão de Folgas.
- * O SAP permanece sem link até a conclusão do desenvolvimento.
+ * EndereÃ§os publicados dos sistemas do Portal COELO.
+ * Os sistemas permanecem independentes e sÃ£o abertos em nova aba.
  */
 const SYSTEM_URLS = {
   folgas: "https://script.google.com/macros/s/AKfycbxUUyYFJ0k0U9zuAXDRkM-Vx3co40YOt01PzBSw4lJKot_jSq2J4fmGACN2-kl9nEO_Pw/exec",
@@ -8,10 +8,17 @@ const SYSTEM_URLS = {
 };
 
 document.addEventListener("DOMContentLoaded", () => {
-  const linkFolgas = document.getElementById("link-folgas");
-  if (SYSTEM_URLS.folgas) {
-    linkFolgas.href = SYSTEM_URLS.folgas;
-    linkFolgas.target = "_blank";
-    linkFolgas.rel = "noopener noreferrer";
-  }
+  const systems = [
+    ["link-folgas", SYSTEM_URLS.folgas],
+    ["link-sap", SYSTEM_URLS.sap]
+  ];
+
+  systems.forEach(([id, url]) => {
+    const link = document.getElementById(id);
+    if (link && url) {
+      link.href = url;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+    }
+  });
 });
